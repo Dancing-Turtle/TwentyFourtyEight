@@ -14,6 +14,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -124,12 +125,19 @@ public class MainFrame extends Application{
     }
 
     void updateTile(int index, int value){
-        ((Label)tiles.get(index).getChildren().get(0)).setText(String.valueOf(value));
+        try {
+            ((Label)tiles.get(index).getChildren().get(0)).setText(String.valueOf(value));
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("Index Out of Bounds: " + e.getMessage());
+        }
     }
     void updateTile(int column, int row, int value){
         //Multidimension usage for simplicity
         int location = (column * 4) + row;
-        System.out.println(location);
-        ((Label)tiles.get(location).getChildren().get(0)).setText(String.valueOf(value));
+        try {
+            ((Label)tiles.get(location).getChildren().get(0)).setText(String.valueOf(value));
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("Index Out of Bounds: " + e.getMessage());
+        }
     }
 }
