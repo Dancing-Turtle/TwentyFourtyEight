@@ -23,7 +23,6 @@ public class MainFrame extends Application{
     Insets pxPad5 = new Insets(5, 5, 5, 5);
     Insets pxPad1 = new Insets(1, 1, 1, 1);
 
-
     private Scene scene;
 
     //Dummy Tiles
@@ -93,12 +92,25 @@ public class MainFrame extends Application{
         scoreField.setEditable(false);
         innerContainer.getChildren().add(scoreField);
 
-
         return innerContainer;
+    }
+
+    void updateScore(boolean isTop, int score){
+        if(isTop){
+            ((TextField)sideBar[1].getChildren().get(0)).setText("Top Score: " + score);
+        } else {
+            ((TextField)sideBar[0].getChildren().get(0)).setText("Score: " + score);
+        }
+
+
     }
 
     Background bgMaker(Color paint){
         return new Background(new BackgroundFill(paint, CornerRadii.EMPTY, Insets.EMPTY));
+    }
+
+    void updateTile(int index, int value){
+        //Placeholder
     }
 
 
