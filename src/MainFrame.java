@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainFrame extends Application{
-    int width = 800, height = (width * 3 /4) + 25;
+    int width = 800, height = (width * 3 /4);
     Border blackBorder = new Border(new BorderStroke(Color.BLACK,
             BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
     Font font = Font.loadFont(getClass().getResourceAsStream("Font/ClearSans-Bold.ttf"), 60);
@@ -34,7 +34,8 @@ public class MainFrame extends Application{
     }
 
     public void start(Stage primarystage){
-        width -= 20;
+        width -= 25;
+        height+=15;
         // GridPane
         GridPane gridPane = new GridPane();
         gridPane.setPadding(pxPad5);
