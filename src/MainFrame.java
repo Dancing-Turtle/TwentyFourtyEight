@@ -20,9 +20,8 @@ public class MainFrame extends Application{
     Border blackBorder = new Border(new BorderStroke(Color.BLACK,
             BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
     Font font = Font.loadFont(getClass().getResourceAsStream("Font/ClearSans-Bold.ttf"), 60);
-    // GridPane
-    Insets pxPad5 = new Insets(5, 5, 5, 5);
-    Insets pxPad1 = new Insets(1, 1, 1, 1);
+    Insets pxPad5 = new Insets(5, 5, 5, 5),
+            pxPad1 = new Insets(1, 1, 1, 1);
 
     private Scene scene;
 
@@ -36,6 +35,7 @@ public class MainFrame extends Application{
 
     public void start(Stage primarystage){
         width -= 20;
+        // GridPane
         GridPane gridPane = new GridPane();
         gridPane.setPadding(pxPad5);
         gridPane.setHgap(5);
