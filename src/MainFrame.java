@@ -1,15 +1,12 @@
 import javafx.application.Application;
-import javafx.css.PseudoClass;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -22,8 +19,8 @@ public class MainFrame extends Application{
     int width = 800, height = (width * 3 /4) + 25;
     Border blackBorder = new Border(new BorderStroke(Color.BLACK,
             BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT));
-    Font font = new Font("Arial Regular", 36);
-
+    Font font = Font.loadFont(getClass().getResourceAsStream("Font/ClearSans-Bold.ttf"), 60);
+    // GridPane
     Insets pxPad5 = new Insets(5, 5, 5, 5);
     Insets pxPad1 = new Insets(1, 1, 1, 1);
 
@@ -39,7 +36,6 @@ public class MainFrame extends Application{
 
     public void start(Stage primarystage){
         width -= 20;
-        // GridPane
         GridPane gridPane = new GridPane();
         gridPane.setPadding(pxPad5);
         gridPane.setHgap(5);
@@ -63,6 +59,7 @@ public class MainFrame extends Application{
         //Credits
         Text authors = new Text("Faith L Neely\nSean W Fuchel\nDavid M Workley\nAlexander J Martin\nMatthew J Robbins\nRachel A Burnsworth\nTimothy J Hammond");
         authors.setStyle("-fx-text-alignment: right");
+
         authors.setTranslateX(45);
         authors.setTranslateY(15);
         gridPane.add(authors, 4, 3, 1, 1);
@@ -98,6 +95,7 @@ public class MainFrame extends Application{
         return innerContainer;
     }
 
+
     HBox addTile(){
         HBox hBox = new HBox();
         Label l = new Label("0");
@@ -111,28 +109,35 @@ public class MainFrame extends Application{
         return hBox;
     }
 
+    /**
+     * Updates the score field.
+     */
+
     void updateScore(boolean isTop, int score){
         if(isTop){
             ((TextField)sideBar[1].getChildren().get(0)).setText("Top Score: " + score);
         } else {
             ((TextField)sideBar[0].getChildren().get(0)).setText("Score: " + score);
         }
-
     }
 
     Background bgMaker(Color paint){
         return new Background(new BackgroundFill(paint, CornerRadii.EMPTY, Insets.EMPTY));
     }
-
+    /**
+     * Update tile at selected index with the specified value.
+     */
     void updateTile(int index, int value){
-        try {
+        try{
             ((Label)tiles.get(index).getChildren().get(0)).setText(String.valueOf(value));
         } catch (IndexOutOfBoundsException e){
             System.out.println("Index Out of Bounds: " + e.getMessage());
         }
     }
+    /**
+     * Multi-Dimensional usage for simplicity.
+     */
     void updateTile(int column, int row, int value){
-        //Multidimension usage for simplicity
         int location = (column * 4) + row;
         try {
             ((Label)tiles.get(location).getChildren().get(0)).setText(String.valueOf(value));
