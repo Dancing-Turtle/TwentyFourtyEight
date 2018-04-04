@@ -75,6 +75,7 @@ public class MainFrame extends Application{
         }
         //
         primarystage.setScene(scene);
+        primarystage.setResizable(false);
         primarystage.setTitle("2048 Game");
         primarystage.show();
     }
