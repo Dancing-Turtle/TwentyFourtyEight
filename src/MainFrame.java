@@ -140,7 +140,7 @@ public class MainFrame extends Application{
      * Multi-Dimensional usage for simplicity.
      */
     void updateTile(int column, int row, int value){
-        int location = (column * 4) + row;
+        int location = (row * 4) + column;
         try {
             ((Label)tiles.get(location).getChildren().get(0)).setText(String.valueOf(value));
         } catch (IndexOutOfBoundsException e){
